@@ -25,4 +25,10 @@ describe ActionController::MobileFu do
     @view.is_device?(/iphone|ipad/i).should be_true
     @view.is_device?(/blackberry/).should   be_false
   end
+
+  it "uses user agent-based detection by default" do
+    ua 'iPhone'
+    @request.stub!(:host).and_return('www.example.com')
+    @view.is_mobile_device?.should be_true
+  end
 end

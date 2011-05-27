@@ -21,11 +21,11 @@ describe MobilizedStyles do
     @view.stub!(:config).and_return(@config)
     @request.stub!(:user_agent)
   end
-  
+
   def ua(str)
     @request.stub!(:user_agent).and_return(str)
   end
-  
+
   it "will include a mobilized css file if it recognizes a string in the user agent" do
     ua "iphone"
     File.should_receive(:exist?).with("stylesheets/style_iphone.css").and_return(true)
