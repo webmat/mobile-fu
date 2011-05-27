@@ -17,7 +17,7 @@ module MobileFuHelper
   end
   
   def js_enabled_mobile_device?
-    is_device?('iphone') || is_device?('ipod') || is_device?('ipad') || is_device?('mobileexplorer') || is_device?('android')
+    is_device?(/iphone|ipod|ipad|mobileexplorer|android/i)
   end
 end
 
