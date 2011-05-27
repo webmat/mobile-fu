@@ -98,5 +98,3 @@ module ActionController
   end
   
 end
-
-ActionController::Base.send(:include, ActionController::MobileFu)
