@@ -91,7 +91,11 @@ module ActionController
       # e.g., is_device?('iphone') or is_device?('mobileexplorer')
       
       def is_device?(type)
-        request.user_agent.to_s.downcase.include?(type.to_s.downcase)
+        if type.is_a? Regexp
+          type.match(request.user_agent)
+        else
+          request.user_agent.to_s.downcase.include?(type.to_s.downcase)
+        end
       end
     end
     

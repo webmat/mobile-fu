@@ -19,4 +19,10 @@ describe ActionController::MobileFu do
     @view.is_device?('iPhone').should be_true
     @view.is_device?('iPad').should   be_false
   end
+
+  it "should let us detect user agents by providing a regex" do
+    ua 'Mozilla/5.0 (iPhone; U; CPU iPhone OS 3_0 like Mac OS X; en-us) AppleWebKit/528.18 (KHTML, like Gecko) Version/4.0 Mobile/7A341 Safari/528.16'
+    @view.is_device?(/iphone|ipad/i).should be_true
+    @view.is_device?(/blackberry/).should   be_false
+  end
 end
