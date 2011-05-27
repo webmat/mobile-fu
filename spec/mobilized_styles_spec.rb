@@ -12,10 +12,13 @@ end
 describe MobilizedStyles do
   
   before(:each) do
+    @config = mock(:RailsConfig)
+    @config.stub!(:stylesheets_dir).and_return('stylesheets')
     @view = mock(:ActionView)
     @request = mock(:ActionRequest)
     @view.extend(MobilizedStyles)
     @view.stub!(:request).and_return(@request)
+    @view.stub!(:config).and_return(@config)
     @request.stub!(:user_agent)
   end
   
